@@ -13,6 +13,9 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s  
+    networks:
+      - my-network
+
   gateway:
     build: gateway
     mem_limit: 512m
@@ -23,7 +26,10 @@ services:
     restart: always
     depends_on:
       server:
-          condition: service_healthy
+        condition: service_healthy
+    networks:
+      - my-network
+
   central:
     build: central
     mem_limit: 512m
@@ -41,4 +47,10 @@ services:
     restart: always
     depends_on:
       server:
-          condition: service_healthy
+        condition: service_healthy
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
