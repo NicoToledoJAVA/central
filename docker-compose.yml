@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  server:
+    build: server
+    mem_limit: 512m
+    ports:
+      - 8761:8761
+    restart: always
+    depends_on:
+      direccion:
+          condition: service_healthy
+  gateway:
+    build: gateway
+    mem_limit: 512m
+    ports:
+      - 443:443
+    environment:
+      EUREKA: http://server:8761/eureka/      
+    restart: always
+    depends_on:
+      direccion:
+          condition: service_healthy
+  central:
+    build: central
+    mem_limit: 512m
+    ports:
+      - 8180:8180
+    environment:
+      EUREKA: http://server:8761/eureka/
+      BD_USER: vps3_root
+      BD_PASSWORD: 123
+      BD_URL: jdbc:mysql://vps-3858808-x.dattaweb.com:3306/vps3_cursoReact?createDatabaseIfNotExist=true&serverTimezone=UTC      
+      PRIVATE_KEY: f4e5d3bad303c742f671fbf03518e9bc94adf6921eacb60c1074496e143e3ce0
+      SS_PASSWORD: 1234
+      SS_USER: todocode
+      USER_GENERATOR: TODOCODE-SEC
+    restart: always
+    depends_on:
+      direccion:
+          condition: service_healthy
+  direccion:
+    image: mysql:8.0.33
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_PASSWORD: 123
+      MYSQL_DATABASE: vps3_cursoReact
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10

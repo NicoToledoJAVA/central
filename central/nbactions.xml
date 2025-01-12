@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs>-DBD_PASSWORD=123  -DBD_URL=jdbc:mysql://vps-3858808-x.dattaweb.com:3306/vps3_cursoReact?serverTimezone=UTC  -DBD_USER=vps3_root  -DPRIVATE_KEY=f4e5d3bad303c742f671fbf03518e9bc94adf6921eacb60c1074496e143e3ce0 -DUSER_GENERATOR=TODOCODE-SEC</exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.appArgs></exec.appArgs>
+                <exec.mainClass>ecomistika.central.CentralApplication</exec.mainClass>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs>-DBD_PASSWORD=123  -DBD_URL=jdbc:mysql://vps-3858808-x.dattaweb.com:3306/vps3_cursoReact?serverTimezone=UTC  -DBD_USER=vps3_root  -DPRIVATE_KEY=f4e5d3bad303c742f671fbf03518e9bc94adf6921eacb60c1074496e143e3ce0  -DUSER_GENERATOR=TODOCODE-SEC -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.appArgs></exec.appArgs>
+                <exec.mainClass>ecomistika.central.CentralApplication</exec.mainClass>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs>-DBD_PASSWORD=123  -DBD_URL=jdbc:mysql://vps-3858808-x.dattaweb.com:3306/vps3_cursoReact?serverTimezone=UTC  -DBD_USER=vps3_root  -DPRIVATE_KEY=f4e5d3bad303c742f671fbf03518e9bc94adf6921eacb60c1074496e143e3ce0  -DUSER_GENERATOR=TODOCODE-SEC</exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.mainClass>ecomistika.central.CentralApplication</exec.mainClass>
+                <exec.executable>java</exec.executable>
+                <exec.appArgs></exec.appArgs>
+            </properties>
+        </action>
+    </actions>
