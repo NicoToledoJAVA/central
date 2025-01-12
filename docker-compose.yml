@@ -17,7 +17,7 @@ services:
     build: gateway
     mem_limit: 512m
     ports:
-      - 443:443
+      - 8444:8444
     environment:
       EUREKA: http://server:8761/eureka/      
     restart: always
