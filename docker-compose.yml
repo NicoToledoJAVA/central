@@ -6,10 +6,7 @@ services:
     mem_limit: 512m
     ports:
       - 8761:8761
-    restart: always
-    depends_on:
-      direccion:
-          condition: service_healthy
+    restart: always    
   gateway:
     build: gateway
     mem_limit: 512m
@@ -19,7 +16,7 @@ services:
       EUREKA: http://server:8761/eureka/      
     restart: always
     depends_on:
-      direccion:
+      server:
           condition: service_healthy
   central:
     build: central
@@ -37,5 +34,5 @@ services:
       USER_GENERATOR: TODOCODE-SEC
     restart: always
     depends_on:
-      direccion:
+      server:
           condition: service_healthy
