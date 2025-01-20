@@ -22,7 +22,6 @@ services:
     ports:
       - 8444:8444
     environment:
-      PATH: classpath:cert2025A.p12
       ALIAS: nicotole
       CERT_PASS: toletole12
       EUREKA: http://server:8761/eureka/      
