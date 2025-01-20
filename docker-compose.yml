@@ -39,7 +39,7 @@ services:
       EUREKA: http://server:8761/eureka/
       BD_USER: vps3_root
       BD_PASSWORD: 123
-      BD_URL: jdbc:mysql://vps-3858808-x.dattaweb.com:3306/vps3_cursoReact?createDatabaseIfNotExist=true&serverTimezone=UTC      
+      BD_URL: jdbc:mysql://vps-3858808-x.dattaweb.com:3306/vps3_cursoReact?serverTimezone=UTC
       PRIVATE_KEY: f4e5d3bad303c742f671fbf03518e9bc94adf6921eacb60c1074496e143e3ce0
       SS_PASSWORD: 1234
       SS_USER: todocode
